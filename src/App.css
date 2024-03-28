@@ -1,0 +1,17 @@
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}
+.boxShad{
+    box-shadow: 2px 2px 10px rgb(224, 219, 219);
+}
+.boxShad:hover{
+    box-shadow: 2px 2px 10px rgb(194, 188, 188);
+}
+.imgShadow{
+   box-shadow:inset 2px 2px 10px rgb(224, 219, 219);
+}
+.offImg{
+    position: absolute;
+    margin-top:6rem;
+    
+}
