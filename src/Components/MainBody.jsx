@@ -6,7 +6,7 @@ import { useState,useEffect } from 'react'
 function MainBody() {
   
   return (
-    <div className="flex flex-col items-center  w-screen h-screen bg-white mt-4">
+    <div className="flex flex-col items-center  w-screen h-full bg-white mt-4">
       
       <FoodTypes/>
       {/* <RestaurantChain ch="flex-no-wrap overflow-x-auto"/> */}
