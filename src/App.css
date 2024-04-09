@@ -13,5 +13,7 @@
 .offImg{
     position: absolute;
     margin-top:6rem;
-    
+}   
+.brdr{
+    border: 2px solid black;
 }
