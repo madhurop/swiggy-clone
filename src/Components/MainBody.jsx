@@ -10,7 +10,7 @@ function MainBody() {
       
       <FoodTypes/>
       {/* <RestaurantChain ch="flex-no-wrap overflow-x-auto"/> */}
-      <RestaurantChain ch="flex-wrap"/>
+      <RestaurantChain ch="flex-wrap" csPro={"min-w-48 max-w-48"}/>
       
     </div>
   )

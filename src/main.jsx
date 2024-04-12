@@ -6,13 +6,15 @@ import Help from './Components/Help.jsx'
 import Error from './Components/Error.jsx'
 import SearchPage from './Components/Search.jsx'
 import './index.css'
+import './App.css'
 import NavBar from './Components/Header.jsx'
 import MainBody from './Components/MainBody.jsx'
 import RestaurantMenu from './Components/RestaurantMenu.jsx'
+import FoodCollection from './Components/FoodCollection.jsx'
 
 function App() {
   return (
-    <div className=' w-screen h-screen bg-gray-200'>
+    <div className=' w-screen h-screen bg-white'>
       <NavBar />
       <Outlet />
 
@@ -46,6 +48,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:resId",
         element: <RestaurantMenu />
+      },
+      {
+        path:"/collection/:collId",
+        element:<FoodCollection/>
       }
     ],
     errorElement: <Error />

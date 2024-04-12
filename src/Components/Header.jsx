@@ -1,7 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export default function NavBar() {
+  useEffect(()=>{
+    getSwiggy()
+  },[])
+
+  async function getSwiggy() {
+    try {
+        const urlSite = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0644917&lng=72.8637579&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const response = await urlSite.json();
+        // console.log(response);
+    } catch (error) {
+        console.error('Error fetching Swiggy data:', error);
+    }
+}
+
    
   const st = "hover:text-red-500";
   return (

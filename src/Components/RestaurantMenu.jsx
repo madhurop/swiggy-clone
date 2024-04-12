@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
+import MenuShimmer from '../ShimmerUI/MenuShimmer';
 
 function RestaurantMenu() {
     const { resId } = useParams();
@@ -13,22 +14,31 @@ function RestaurantMenu() {
     }, []);
 
     const fetchMenu = async () => {
-        const apD = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.9351929&lng=73.62448069999999&restaurantId=${resId}`;
-        const data = await fetch(apD);
-        const resP = await data.json();
-
-        console.log(resP);
-        setResInfo(resP?.data.cards[2]?.card?.card?.info);
-        setResMenu(resP?.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
-        setResMenuNew(resP?.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
-        console.log(resP?.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
-    }
-
+        try {
+            const apD = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0644917&lng=72.8637579&restaurantId=${resId}`;
+            const data = await fetch(apD);
+            if (!data.ok) {
+                throw new Error(`Failed to fetch menu: ${data.status} - ${data.statusText}`);
+            }
+            const resP = await data.json();
+    
+            // console.log(resP);
+            setResInfo(resP?.data.cards[2]?.card?.card?.info);
+            const N = resP?.data.cards.length;
+            setResMenu(resP?.data.cards[N - 1]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
+            setResMenuNew(resP?.data.cards[N - 1]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
+            // console.log(resP?.data.cards[N - 1]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
+        } catch (error) {
+            console.error('Error fetching menu:', error);
+            // Handle the error as needed, such as displaying an error message to the user or logging it for further analysis
+        }
+    };
+    
     // Destructure name and id outside the fetchMenu function
     const { name, id, avgRating, costForTwoMessage, cuisines, locality, areaName, totalRatingString, sla } = resInfo;
     const resMenuImg = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/"
-
-    useEffect(() => {
+   
+       useEffect(() => {
         const delaySearch = setTimeout(() => {
             handleResSearch();
         }, 500); // 500 milliseconds delay
@@ -38,17 +48,28 @@ function RestaurantMenu() {
 
     const handleResSearch = () => {
         const filteredMenu = resMenuNew.filter(item => item.card.info.name.toLowerCase().includes(searchMenu.toLowerCase()));
-        setResMenu(filteredMenu);
+        if(filteredMenu.length==0){
+            alert("No Matches Found")
+        }else{
+            setResMenu(filteredMenu);
+
+        }
+        
     };
     const handleVegSearch = () => {
         const filteredVegMenu = resMenuNew.filter(item => item.card.info.itemAttribute.vegClassifier.toLowerCase()=="veg");
+        
         setResMenu(filteredVegMenu);
     };
     const handleNonVegSearch = () => {
         const filteredNonVegMenu = resMenuNew.filter(item => item.card.info.itemAttribute.vegClassifier.toLowerCase()=="nonveg");
         setResMenu(filteredNonVegMenu);
     };
-
+     if(resMenu.length==0)  {
+        return(
+            <MenuShimmer/>
+        )
+     }
     return (
         <div className='w-full h-full flex justify-center bg-white '>
             <div className="w-7/12 h-full flex flex-col items-center justify-evenly">

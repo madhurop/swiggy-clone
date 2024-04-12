@@ -1,10 +1,13 @@
 import React from 'react'
+import MenuShimmer from '../ShimmerUI/MenuShimmer'
+
 
 function Help() {
+  
   return (
-    <div>
-      <h1>Contact Page</h1>
-    </div>
+    <div className=""></div>
+      
+     
   )
 }
 

@@ -1,0 +1,1 @@
+export const foodCuisine ="https://www.swiggy.com/mapi/restaurants/list/v5?lat=18.528913&lng=73.87441989999999&collection=83645&tags=layout_CCS_NorthIndian&sortBy=&filters=&type=rcv2&offset=0&carousel=true&third_party_vendor=1"

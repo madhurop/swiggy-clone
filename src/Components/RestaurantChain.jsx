@@ -29,7 +29,7 @@ function RestaurantChain(props) {
 
   const apiData = async () => {
     try {
-      const req = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.61610&lng=73.72860&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+      const req = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0644917&lng=72.8637579&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
       if (!req.ok) {
         throw new Error('Network response was not ok');
       }
@@ -44,19 +44,20 @@ function RestaurantChain(props) {
       // Handle error state, maybe display an error message to the user
     }
   }
+  if(newRestaurants.length==0){
+    // console.log("length is zero man")
+    return(
+      <ResCardShimmer/>
+    )
+    
+   }
   console.log(newRestaurants)
 
   const handleSearch = () => {
     const filteredRestaurants = restaurants.filter(ev => ev.info.name.toLowerCase().includes(searchText.toLowerCase()));
     setNewRestaurants(filteredRestaurants);
   };
-//  if(newRestaurants.length==0){
-//   // console.log("length is zero man")
-//   return(
-//     <ResCardShimmer/>
-//   )
-  
-//  }
+ 
   return (
     <div className="w-3/4 item-center border-b border-solid border-black h-auto">
 
@@ -68,13 +69,13 @@ function RestaurantChain(props) {
 
         </div>
 
-        <button className="h-10 p-2 rounded-xl bg-gray-200 boxShad" onClick={filterTopRatedRestaurants}>4+ Rating</button>
-        <button className="h-10 p-2 rounded-xl bg-gray-200 boxShad" onClick={filterDelivery}>Fast Delivery</button>
+        <button className="h-10 p-2 rounded-xl bg-gray-200 boxShad sm:w-16 text-xs" onClick={filterTopRatedRestaurants}>4+ Rating</button>
+        <button className="h-10 p-2 rounded-xl bg-gray-200 boxShad sm:w-16 text-xs" onClick={filterDelivery}>Fast Delivery</button>
       </div>
 
       <div className={`flex ${props.ch} ml-5 mt-3 mb-3 gap-6 justify-evenly w-auto h-auto scrollbar-hidden`}>
         {newRestaurants.map((restaurant, index) => (
-          <Link to={"/restaurant/"+restaurant.info.id} key={index} ><RestaurantCards  restData={restaurant} /></Link>
+          <Link to={"/restaurant/"+restaurant.info.id} key={index} ><RestaurantCards  restData={restaurant.info} /></Link>
 
           
         ))}
