@@ -11,6 +11,11 @@ import NavBar from './Components/Header.jsx'
 import MainBody from './Components/MainBody.jsx'
 import RestaurantMenu from './Components/RestaurantMenu.jsx'
 import FoodCollection from './Components/FoodCollection.jsx'
+import InstaMart from './Components/InstaMart.jsx'
+import InstaMartCard from './Components/InstaMartCard.jsx'
+import CategeoryMart from './Components/CategeoryMart.jsx'
+import CategoryMartHigh from './Components/CategoryMartHigh.jsx'
+
 
 function App() {
   return (
@@ -52,6 +57,18 @@ const appRouter = createBrowserRouter([
       {
         path:"/collection/:collId",
         element:<FoodCollection/>
+      },
+      {
+        path:"/instamart",
+        element:<InstaMart/>
+      },
+      {
+        path:"instamart/categeory/:resNodes/:instName",
+        element:<CategeoryMart/>
+      },
+      {
+        path:"instamart/item/:resNodes1/:instName1",
+        element:<CategoryMartHigh/>
       }
     ],
     errorElement: <Error />

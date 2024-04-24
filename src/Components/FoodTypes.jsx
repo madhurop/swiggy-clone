@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { data } from './Api';
 import ShimmerFood from '../ShimmerUI/ShimmerFood';
 import { Link } from 'react-router-dom';
+import UserClass from './UserClass';
 
 function FoodTypes() {
   const [foodData, setfoodData] = useState([]);
@@ -17,11 +18,11 @@ function FoodTypes() {
        // const req1 = await fetch("https://www.swiggy.com/collections/83647?collection_id=83647&tags=layout_CCS_Chinese&type=rcv2")
         const res = await req.json();
         
-        // console.log(res);
+        console.log(res);
         // Assuming setfoodData is a function to handle the received data
-        setfoodData(res.data.cards[0].card.card.imageGridCards.info);
         console.log(res.data.cards[0].card.card.imageGridCards.info)
         console.log(res.data.cards)
+        setfoodData(res.data.cards[0].card.card.imageGridCards.info);
         
     } catch (error) {
         console.error('Error fetching API data:', error);
@@ -56,6 +57,7 @@ function FoodTypes() {
   return (
     <div className=" w-3/4   item-center border-b border-solid border-black ">
       <h1 className="ml-5 text-2xl font-bold">Whats on your mind?</h1>
+      <UserClass fakeData={"Madhur Borade"}/>
       <div className="flex flex-no-wrap overflow-x-auto  ml-5 mt-3 mb-3   gap-6 justify-evenly w-auto h-48  overflow-hidden scrollbar-hidden">
         {foodData.map((foods, index) => (
           

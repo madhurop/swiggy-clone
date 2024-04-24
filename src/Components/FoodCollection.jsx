@@ -3,12 +3,14 @@ import { foodCuisine } from './constants';
 import RestaurantCards from './RestaurantCards';
 import { useParams } from 'react-router-dom';
 import ResCardShimmer from '../ShimmerUI/ResCardShimmer';
+import { Link } from 'react-router-dom';
 
 function FoodCollection() {
   const { collId } = useParams();
   //console.log(collId);
 
   const [foodCollection, setFoodCollection] = useState([]);
+  const [foodCollectionNew, setFoodCollectionNew] = useState([]);
   const [food, setFood] = useState([]);
 
   useEffect(() => {
@@ -42,9 +44,10 @@ function FoodCollection() {
     }
   };
 
-  // if (foodCollection.length === 0) {
-  //   return <ResCardShimmer />;
-  // }
+  if (foodCollection.length === 0) {
+    return <ResCardShimmer />;
+  }
+  
 
   return (
     <div className="w-full h-full bg-white pl-20 ">
@@ -60,7 +63,8 @@ function FoodCollection() {
         <h1 className='mt-3'>{food.count} Restaurants to explore</h1>
         <div className="w-11/12 flex flex-wrap gap-6 justify-evenly mt-5">
           {foodCollection.map((item, index) => (
-            <RestaurantCards key={index} restData={item?.card?.card?.info} />
+            <Link key={index}  to={"/restaurant/"+item?.card?.card?.info?.id}><RestaurantCards restData={item?.card?.card?.info} /></Link>
+            
           ))}
         </div>
       </div>

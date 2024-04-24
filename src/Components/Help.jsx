@@ -1,11 +1,15 @@
 import React from 'react'
 import MenuShimmer from '../ShimmerUI/MenuShimmer'
+import Variants from './Variants'
+
 
 
 function Help() {
   
   return (
-    <div className=""></div>
+    <div className="">
+      <Variants/>
+    </div>
       
      
   )
