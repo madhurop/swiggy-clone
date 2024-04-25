@@ -9,7 +9,7 @@ function MainBody() {
   console.log(onlineStatus)
   
   return (
-    <div className="flex flex-col items-center  w-screen md:(w-full m-4) h-full bg-white mt-2">
+    <div className="flex flex-col items-center  w-full md:screen h-full bg-white mt-2">
       
       <FoodTypes/>
       {/* <RestaurantChain ch="flex-no-wrap overflow-x-auto"/> */}

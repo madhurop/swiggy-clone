@@ -80,11 +80,11 @@ function RestaurantMenu() {
         const filteredNonVegMenu = resMenuNew.filter(item => item.card.info.itemAttribute.vegClassifier.toLowerCase() === "nonveg");
         setResMenu(filteredNonVegMenu);
     };
-    // if(resMenu.length == 0){
-    //     return(
-    //         <MenuShimmer/>
-    //     )
-    // }
+    if(resMenu.length == 0){
+        return(
+            <MenuShimmer/>
+        )
+    }
 
     return (
         <div className='w-full h-full flex justify-center bg-white md:w-full m-2'>
@@ -126,7 +126,7 @@ function RestaurantMenu() {
 
                     {resMenu.map((menu, index) => (
 
-                        <div className="w-full justify-evenly mt-5 shadow-xl" key={index}>
+                        <div className="w-full justify-evenly mt-5 shadow-xl bg-gray-50 border border-gray rounded-md" key={index}>
                             <div className="w-full mt-5">
                                 <h2 className="font-bold text-lg">{menu.card.card.title}</h2>
                             </div>

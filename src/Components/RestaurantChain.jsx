@@ -59,7 +59,7 @@ function RestaurantChain(props) {
   };
  
   return (
-    <div className="w-3/4 item-center border-b border-solid border-black h-auto">
+    <div className=" w-full md:w-3/4 item-center border-b border-solid border-black h-auto">
 
       <h1 className="ml-5 text-2xl font-bold">What's on your Restaurant?</h1>
       <div className="flex flex-row items-center justify-around">

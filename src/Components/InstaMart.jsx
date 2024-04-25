@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { instaMart } from './Api'
 import { Link } from 'react-router-dom'
 import InstaMartCard from './InstaMartCard'
+import InstaMartShimmer from '../ShimmerUI/InstaMartShimmer'
 
 function InstaMart() {
   const [martList, setMartList] = useState([])
@@ -19,14 +20,18 @@ function InstaMart() {
     console.log(response.data.categories)
     console.log(response.data.filters)
   }
-
+if(martList.length==0){
+  return(
+    <InstaMartShimmer/>
+  )
+}
   
   return (
-    <div className='bg-gray-300 w-full flex  justify-center'>
-      <div className="bg-gray-200 w-3/4 flex flex-col justify-center">
-        <h1>Madhur</h1>
-        <input type="text" placeholder='Search Here' />
-        <div className="bg-red-200 flex-wrap w-full flex flex-row gap-2 justify-evenly">
+    <div className='bg-white w-full flex  justify-center'>
+      <div className="bg-white w-3/4 flex flex-col items-center">
+        <h1 className='font-bold text-xl mb-4 '>Instamart</h1>
+        <input className="w-5/6 p-5 h-10 mb-4  border border-gray-200 rounded-lg shadow-lg" type="text" placeholder='Search Here' />
+        <div className="bg-white flex-wrap w-full flex flex-row gap-2 gap-y-5 justify-evenly">
           {martList.map((list, index) => (
             <Link key={index} to={"/instamart/categeory/" + list.id+"/"+list.displayName}>
               <InstaMartCard list={list} />
