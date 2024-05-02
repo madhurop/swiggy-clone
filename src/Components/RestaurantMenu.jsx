@@ -18,7 +18,7 @@ function RestaurantMenu() {
 
     const fetchMenu = async () => {
         try {
-            const apD = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0644917&lng=72.8637579&restaurantId=${resId}`;
+            const apD = `https://corsproxy.io/https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0644917&lng=72.8637579&restaurantId=${resId}`;
             const data = await fetch(apD);
             if (!data.ok) {
                 throw new Error(`Failed to fetch menu: ${data.status} - ${data.statusText}`);
