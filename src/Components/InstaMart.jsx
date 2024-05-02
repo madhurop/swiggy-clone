@@ -13,7 +13,11 @@ function InstaMart() {
 
   }, [])
   const quickMart = async () => {
-    const quickApi = await fetch("https://www.swiggy.com/api/instamart/category-listing?categoryName=Fresh+Fruits&custom_back=true&filterId=65706476033ec00001332057&storeId=649837&taxonomyType=All+Listing")
+    const quickApi = await fetch("https://proxy.cors.sh/https://www.swiggy.com/api/instamart/category-listing?categoryName=Fresh+Fruits&custom_back=true&filterId=65706476033ec00001332057&storeId=649837&taxonomyType=All+Listing",{
+      headers: {
+        'x-cors-api-key': 'temp_5851881bfc243383ecc5830f30b80393'
+        }
+    })
     const response = await quickApi.json()
 
     setMartList(response.data.categories)

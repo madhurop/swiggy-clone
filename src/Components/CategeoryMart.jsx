@@ -34,7 +34,11 @@ function CategoryMart() {
     try {
       //const quickApi = await fetch(`https://www.swiggy.com/api/instamart/category-listing?categoryName=Fresh+Fruits&custom_back=true&filterId=${resNodes}&storeId=649837&taxonomyType=All+Listing`);
       //const quickApi= await fetch(`https://www.swiggy.com/api/instamart/category-listing?categoryName=Sauces+and+Spreads&custom_back=true&filterId=639febf61555a809f1267dba&storeId=649837&taxonomyType=All+Listing`)
-      const quickApi= await fetch(`https://www.swiggy.com/api/instamart/category-listing?categoryName=${spilName}&custom_back=true&taxonomyType=All+Listing`)
+      const quickApi= await fetch(`https://proxy.cors.sh/https://www.swiggy.com/api/instamart/category-listing?categoryName=${spilName}&custom_back=true&taxonomyType=All+Listing`,{
+        headers: {
+          'x-cors-api-key': 'temp_5851881bfc243383ecc5830f30b80393'
+          }
+      })
       if (!quickApi.ok) {
         throw new Error('Failed to fetch data');
       }
@@ -50,7 +54,11 @@ function CategoryMart() {
   };
 
   const subCategory = async ()=>{
-    const cateGoryApi = await fetch("https://www.swiggy.com/api/instamart/category-listing?categoryName=Sauces+and+Spreads&custom_back=true&filterId=639fec124a232c09b574680a&storeId=649837&taxonomyType=All+Listing")
+    const cateGoryApi = await fetch("https://proxy.cors.sh/https://www.swiggy.com/api/instamart/category-listing?categoryName=Sauces+and+Spreads&custom_back=true&filterId=639fec124a232c09b574680a&storeId=649837&taxonomyType=All+Listing",{
+      headers: {
+        'x-cors-api-key': 'temp_5851881bfc243383ecc5830f30b80393'
+        }
+    })
     const catRes = await cateGoryApi.json()
     console.log(catRes)
   }

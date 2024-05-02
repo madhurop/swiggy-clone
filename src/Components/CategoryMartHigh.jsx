@@ -46,7 +46,11 @@ function CategoryMartHigh() {
     };
 
     const subCategory = async () => {
-        const cateGoryApi = await fetch(`https://www.swiggy.com/api/instamart/category-listing?categoryName=${spilName}&custom_back=true&filterId=${resNodes1}&storeId=649837&taxonomyType=All+Listing`)
+        const cateGoryApi = await fetch(`https://proxy.cors.sh/https://www.swiggy.com/api/instamart/category-listing?categoryName=${spilName}&custom_back=true&filterId=${resNodes1}&storeId=649837&taxonomyType=All+Listing`,{
+            headers: {
+                'x-cors-api-key': 'temp_5851881bfc243383ecc5830f30b80393'
+                }
+        })
         const response = await cateGoryApi.json()
         console.log(response)
         setSubMart(response.data.filters);
