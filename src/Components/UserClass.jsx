@@ -22,7 +22,7 @@ function UserClass() {
 
     useEffect(()=>{
         //nasaApi()
-        instaApi()
+        //instaApi()
     },[])
     function showPosition(position) {
         var lat = position.coords.latitude;

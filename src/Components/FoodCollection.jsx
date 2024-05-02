@@ -29,9 +29,13 @@ function FoodCollection() {
       //console.log("Parsed query parameters:", params);
 
       // Use the extracted parameters in your fetch request
-      const apiData = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0644917&lng=72.8637579&collection=${params.collection_id}&tags=${params.tags}&type=${params.type}`;
+      const apiData = `https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0644917&lng=72.8637579&collection=${params.collection_id}&tags=${params.tags}&type=${params.type}`;
       
-      const response = await fetch(apiData);
+      const response = await fetch(apiData,{
+        headers: {
+          'x-cors-api-key': 'temp_5851881bfc243383ecc5830f30b80393'
+          }
+      });
       const data = await response.json();
       console.log(data);
 

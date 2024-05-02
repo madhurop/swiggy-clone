@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 export default function NavBar() {
   useEffect(()=>{
-    getSwiggy()
+    //getSwiggy()
   },[])
 
   async function getSwiggy() {
