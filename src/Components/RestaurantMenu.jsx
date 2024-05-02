@@ -18,7 +18,7 @@ function RestaurantMenu() {
 
     const fetchMenu = async () => {
         try {
-            const apD = `https://proxy.cors.sh/https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0644917&lng=72.8637579&restaurantId=${resId}`;
+            const apD = `https://proxy.cors.sh/https://corsproxy.io/https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0644917&lng=72.8637579&restaurantId=${resId}`;
             const data = await fetch(apD,{
                 headers: {
                     'x-cors-api-key': 'temp_5851881bfc243383ecc5830f30b80393'
