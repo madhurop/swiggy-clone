@@ -4,18 +4,26 @@ import { useEffect } from 'react';
 
 export default function NavBar() {
   useEffect(()=>{
-    //getSwiggy()
+    getSwiggy()
   },[])
 
   async function getSwiggy() {
     try {
-        const urlSite = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0644917&lng=72.8637579&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-        const response = await urlSite.json();
-        // console.log(response);
+      const response = await fetch("/api/items");
+      if (response.status === 200) {
+        const data = await response.json();
+        //setItems(data);
+        console.log(data)
+      } else if (response.status === 304) {
+        console.log("Items data is unchanged.");
+      } else {
+        console.error('Failed to fetch items. Status:', response.status);
+      }
     } catch (error) {
-        console.error('Error fetching Swiggy data:', error);
+      console.error('Error fetching items:', error);
     }
-}
+  }
+  
 
    
   const st = "hover:text-red-500";

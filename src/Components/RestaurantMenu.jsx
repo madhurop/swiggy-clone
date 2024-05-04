@@ -11,6 +11,8 @@ function RestaurantMenu() {
     const [resMenu, setResMenu] = useState([]);
     const [resMenuNew, setResMenuNew] = useState([]);
     const [searchMenu, setSearchMenu] = useState("");
+    const [sortRes, setSortRes] = useState()
+    const [sortResState, setSortResState] = useState(false)
 
     useEffect(() => {
         fetchMenu();
@@ -19,10 +21,10 @@ function RestaurantMenu() {
     const fetchMenu = async () => {
         try {
             const apD = `https://proxy.cors.sh/https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0644917&lng=72.8637579&restaurantId=${resId}`;
-            const data = await fetch(apD,{
+            const data = await fetch(apD, {
                 headers: {
                     'x-cors-api-key': 'temp_5851881bfc243383ecc5830f30b80393'
-                    }
+                }
             });
             if (!data.ok) {
                 throw new Error(`Failed to fetch menu: ${data.status} - ${data.statusText}`);
@@ -44,7 +46,7 @@ function RestaurantMenu() {
         }
     };
 
-    const { name, id, avgRating, costForTwoMessage, cuisines, locality, areaName, totalRatingString, sla } = resInfo;
+    const { name, id, avgRating, costForTwoMessage, cuisines, locality, areaName, totalRatingString, sla, cloudinaryImageId } = resInfo;
     const resMenuImg = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/"
 
     useEffect(() => {
@@ -66,14 +68,21 @@ function RestaurantMenu() {
                 )
             )
             .filter(filteredItem => filteredItem.length > 0);
-    
+
         console.log(filteredMenu);
-        //setResMenu(filteredMenu)
+        if (filteredMenu.length == 0) {
+            setSortResState(false)
+        } else {
+            setSortResState(true)
+
+        }
+        setSortRes(filteredMenu)
+
     };
-    
+
     //handleResSearch1(); // Call the function to execute it
-    
-    
+
+
 
     const handleVegSearch = () => {
         const filteredVegMenu = resMenuNew.filter(item => item.card.info.itemAttribute.vegClassifier.toLowerCase() === "veg");
@@ -84,9 +93,9 @@ function RestaurantMenu() {
         const filteredNonVegMenu = resMenuNew.filter(item => item.card.info.itemAttribute.vegClassifier.toLowerCase() === "nonveg");
         setResMenu(filteredNonVegMenu);
     };
-    if(resMenu.length == 0){
-        return(
-            <MenuShimmer/>
+    if (resMenu.length == 0) {
+        return (
+            <MenuShimmer />
         )
     }
 
@@ -98,11 +107,16 @@ function RestaurantMenu() {
                 </div>
 
 
-                <div className="w-full h-40 bg-white border border-solid border-gray-200 rounded-xl flex flex-col justify-evenly pl-3 shadow-xl mt-5 ">
-                    <h6 className="font-bold"> {avgRating} {totalRatingString}  {costForTwoMessage}</h6>
-                    <p className="font-bold ">{cuisines}</p>
-                    <p className="font-bold">Outlet <span className='font-light'>{locality}</span></p>
-                    <p className="font-bold">{areaName}</p>
+                <div className="w-full h-40 bg-white border border-solid border-gray-200 rounded-xl flex flex-row items-center justify-evenly pl-3 shadow-xl mt-5 ">
+                    <div className="h-full w-3/4 flex flex-col justify-evenly">
+
+                        <h6 className="font-bold"> {avgRating} {totalRatingString}  {costForTwoMessage}</h6>
+                        <p className="font-bold ">{cuisines}</p>
+                        <p className="font-bold">Outlet <span className='font-light'>{locality}</span></p>
+                        <p className="font-bold">{areaName}</p>
+                    </div>
+                    <img className='w-1/4 h-5/6 rounded-xl' src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId} alt="" />
+
                 </div>
                 <div className="w-full flex justify-center mt-5">
                     <h4 className="font-bold text-xl">Menu Card</h4>
@@ -120,27 +134,26 @@ function RestaurantMenu() {
                 </div>
 
                 <div className="w-full justify-evenly  mt-5 ">
-                    {/* {
-                    resMenu[0][0].card["@type"]=="type.googleapis.com/swiggy.presentation.food.v2.Dish"(console.log("hey"))
-                        
-                    
-                } */}
-                    
-
-
-                    {resMenu.map((menu, index) => (
-
-                        <div className="w-full justify-evenly mt-5 shadow-xl bg-gray-50 border border-gray rounded-md" key={index}>
-                            <div className="w-full mt-5">
-                                <h2 className="font-bold text-lg">{menu.card.card.title}</h2>
+                    {sortResState ? (
+                        sortRes.map((thali,index)=>(
+                            thali.map((subThali,index)=>(
+                                <RestaurantMenuCards menu={subThali.card.info} key={index} imgData={cloudinaryImageId} />
+                            ))
+                        ))
+                    ) : (
+                        resMenu.map((menu, index) => (
+                            <div className="w-full h-auto overflow-hidden justify-evenly mt-5 shadow-xl bg-gray-50 border border-gray rounded-md" key={index}>
+                                <div className="w-full mt-5">
+                                    <h2 className="font-bold text-lg">{menu.card.card.title}</h2>
+                                </div>
+                                {menu.card.card.itemCards.map((subMenu, index) => (
+                                    <RestaurantMenuCards menu={subMenu.card.info} key={index} imgData={cloudinaryImageId} />
+                                ))}
                             </div>
-                            {menu.card.card.itemCards.map((subMenu, index) => (
-                                <RestaurantMenuCards menu={subMenu.card.info} key={index} />
-
-                            ))}
-                        </div>
-                    ))}
+                        ))
+                    )}
                 </div>
+
             </div>
 
         </div>

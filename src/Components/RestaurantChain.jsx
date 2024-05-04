@@ -3,14 +3,13 @@ import RestaurantCards from './RestaurantCards';
 import { finald1 } from './Api';
 import ResCardShimmer from '../ShimmerUI/ResCardShimmer';
 import { Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function RestaurantChain(props) {
   const [restaurants, setRestaurants] = useState([]);
   const [newRestaurants, setNewRestaurants] = useState([]);
-  const notify=()=>toast("Wow Msdhur Thats So Good")
+  
   
 
 
@@ -78,8 +77,7 @@ function RestaurantChain(props) {
 
         <button className="h-10 p-2 rounded-xl bg-gray-200 boxShad sm:w-16 text-xs" onClick={filterTopRatedRestaurants}>4+ Rating</button>
         <button className="h-10 p-2 rounded-xl bg-gray-200 boxShad sm:w-16 text-xs" onClick={filterDelivery}>Fast Delivery</button>
-        <button className="h-10 p-2 tounded-xl bg-gray-200 boxShad sm:w-16 text-xs" onClick={notify}>Click Me</button>
-        <ToastContainer position="top-center" theme="dark"/>
+        
       </div>
 
       <div className={`flex ${props.ch} ml-5 mt-3 mb-3 gap-6 justify-evenly w-auto h-auto scrollbar-hidden`}>
