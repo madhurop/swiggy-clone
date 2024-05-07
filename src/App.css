@@ -83,7 +83,7 @@
     height:25px;
     margin-top: 5px;
   }
-  @media (max-width:400px) {
+  @media (max-width:470px) {
     .custom{
       width: 100%;
       padding: 20px;
@@ -100,10 +100,32 @@
     .dropFoodDiv{
       height: 140px;
     }
+    .dropResDiv{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      
+    }
+    
     .dropResCard{
-      min-width: 100px;
-      max-width: 145px;
+      min-width: 100%;
+     
+      height: auto;
+ 
+      display: flex;
+      flex-direction: row;
+      overflow: hidden;
+      
 
+    }
+    .conImg{
+      width: 30%;
+      height: 30%;
+    }
+    .conDiv{
+      
+      margin-left: 10px;
     }
   }
   @media (max-width:650px) {
