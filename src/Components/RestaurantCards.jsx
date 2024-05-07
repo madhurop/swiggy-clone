@@ -13,7 +13,7 @@ function RestaurantCards({restData}) {
     const restImgLarge = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/${cloudinaryImageId}`;
 
     return (
-        <div className="flex flex-col w-42 min-w-48 max-w-48 h-auto mb-3 rounded-xl text-start boxShad">
+        <div className="flex flex-col min-w-48 max-w-48 h-auto mb-3 rounded-xl text-start boxShad dropResCard">
             <img
                 src={restImg}
                 srcSet={`${restImgSmall} 144w, ${restImgMedium} 216w, ${restImgLarge} 288w`}
@@ -21,10 +21,10 @@ function RestaurantCards({restData}) {
                 alt=""
                 className="w-full h-40 rounded-xl boxShad object-cover size-full"
             />
-            <h1 className="font-bold">{name}</h1>
-            <h1 className="font-bold">{avgRating} {sla.slaString}</h1>
-            <p className="overflow-hidden whitespace-nowrap text-ellipsis">{cuisines1}</p>
-            <p>{areaName}</p>
+            <h1 className="sm:text-md font-bold text-sm">{name}</h1>
+            <h1 className="sm:text-md font-bold text-sm">{avgRating} {sla.slaString}</h1>
+            <p  className="sm:text-md overflow-hidden whitespace-nowrap text-ellipsis text-xs">{cuisines1}</p>
+            <p  className='sm:text-md text-xs'>{areaName}</p>
         </div>
     );
 }

@@ -22,7 +22,7 @@ function MainBody() {
   console.log(onlineStatus)
   
   return (
-    <div className="flex flex-col items-center  w-full md:screen h-full bg-white mt-2">
+    <div className="flex flex-col items-center  w-ful h-full bg-white mt-2">
       <ToastContainer/>
       
       <FoodTypes/>

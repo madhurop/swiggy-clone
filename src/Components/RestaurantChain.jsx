@@ -65,18 +65,18 @@ function RestaurantChain(props) {
   };
  
   return (
-    <div className=" w-full md:w-3/4 item-center border-b border-solid border-black h-auto">
+    <div className=" w-3/4 item-center border-b border-solid border-black h-auto custom">
 
       <h1 className="ml-5 text-2xl font-bold">What's on your Restaurant?</h1>
       <div className="flex flex-row items-center justify-around">
         <div className='flex flex-row  items-center justify-evenly ' >
-          <input placeholder='Search Your Restaurant' type="text" className=" w-60 h-10 bg-gray-200 hover:w-72 border border-solid border-gray-200   rounded-xl" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+          <input placeholder='Search Your Restaurant' type="text" className=" w-4/12 h-10 bg-gray-200  border border-solid border-gray-200   rounded-xl" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
           <button className=" h-8 p-2 bg-xl border border-solid border-black hover:bg-gray-200 rounded-xl ml-3" onClick={handleSearch}>Search</button>
 
         </div>
 
-        <button className="h-10 p-2 rounded-xl bg-gray-200 boxShad sm:w-16 text-xs" onClick={filterTopRatedRestaurants}>4+ Rating</button>
-        <button className="h-10 p-2 rounded-xl bg-gray-200 boxShad sm:w-16 text-xs" onClick={filterDelivery}>Fast Delivery</button>
+        <button className="h-10 p-2 rounded-xl bg-gray-200 boxShad w-3/12 text-xs" onClick={filterTopRatedRestaurants}>4+ Rating</button>
+        <button className="h-10 p-2 rounded-xl bg-gray-200 boxShad w-3/12 text-xs" onClick={filterDelivery}>Fast Delivery</button>
         
       </div>
 
