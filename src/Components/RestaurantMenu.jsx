@@ -102,8 +102,8 @@ function RestaurantMenu() {
     return (
         <div className='w-full h-full flex justify-center bg-white md:w-full m-2'>
             <div className="w-full md:w-7/12 h-full flex flex-col items-center justify-evenly">
-                <div className="w-full mt-5">
-                    <h2 className="text-2xl font-bold">{name}</h2>
+                <div className="w-full mt-5 ">
+                    <h2 className="text-lg sm:text-2xl  font-bold">{name}</h2>
                 </div>
 
 

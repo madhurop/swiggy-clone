@@ -86,7 +86,8 @@
   @media (max-width:470px) {
     .custom{
       width: 100%;
-      padding: 20px;
+      
+     
     }
     .dropnav{
       display: flex;
@@ -99,6 +100,12 @@
     }
     .dropFoodDiv{
       height: 140px;
+      width: 100%;
+      padding: 0;
+     
+      padding-left: 10px;
+      margin-left: -20px;
+
     }
     .dropResDiv{
       display: flex;
@@ -126,6 +133,23 @@
     .conDiv{
       
       margin-left: 10px;
+    }
+    .conFoodColl{
+      padding: 0;
+    }
+    .conFoodRes{
+      width:90% ;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: space-between;
+      padding-left: 10px;
+    }
+    .headText{
+      margin-top: 0;
+      
+      padding-left: 10px;
     }
   }
   @media (max-width:650px) {
