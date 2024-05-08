@@ -31,7 +31,8 @@ function RestaurantChain(props) {
 
   const apiData = async () => {
     try {
-      const req = await fetch("https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0644917&lng=72.8637579&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING", {
+      //const req = await fetch("https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0644917&lng=72.8637579&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING", {
+      const req = await fetch("https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0644917&lng=72.8637579", {
         headers: {
         'x-cors-api-key': 'temp_5851881bfc243383ecc5830f30b80393'
         }
