@@ -37,10 +37,10 @@ function FoodCollection() {
           }
       });
       const data = await response.json();
-      console.log(data);
+      //console.log(data);
 
-      console.log(data?.data?.cards[0]?.card?.card?.title);
-      console.log(data?.data?.cards.slice(3));
+      //console.log(data?.data?.cards[0]?.card?.card?.title);
+      //console.log(data?.data?.cards.slice(3));
       setFoodCollection(data?.data?.cards.slice(3));
       setFood(data?.data?.cards[0]?.card?.card);
     } catch (error) {

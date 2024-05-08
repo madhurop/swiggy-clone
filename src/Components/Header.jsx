@@ -7,7 +7,7 @@ export default function NavBar() {
   const UserMy = useContext(myData)
   console.log(UserMy)
   useEffect(()=>{
-    getSwiggy()
+    //getSwiggy()
   },[])
 
   async function getSwiggy() {

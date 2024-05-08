@@ -7276,6 +7276,7 @@
 export const finald1 = data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
 
       //console.log(data.data.cards[0].card.card.imageGridCards.info)
+      console.log(finald)
       console.log(finald1)
       // finald.map(m =>
       //   console.log(m)

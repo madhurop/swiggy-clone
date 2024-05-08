@@ -43,10 +43,10 @@ function CategoryMart() {
         throw new Error('Failed to fetch data');
       }
       const response = await quickApi.json();
-      console.log(response);
+      //console.log(response);
       setSubMart(response.data.filters);
       setCateMart(response.data.widgets[1].data);
-      console.log(response.data.widgets[1].data);
+      //console.log(response.data.widgets[1].data);
     } catch (error) {
       console.error('Error fetching data:', error);
       // Handle error state

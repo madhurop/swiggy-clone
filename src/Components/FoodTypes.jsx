@@ -2,6 +2,7 @@ import React from 'react'
 import FoodCard from './FoodCard';
 import { useState, useEffect } from 'react';
 import { data } from './Api';
+import { finald } from './Api';
 import ShimmerFood from '../ShimmerUI/ShimmerFood';
 import { Link } from 'react-router-dom';
 import UserClass from './UserClass';
@@ -11,6 +12,7 @@ function FoodTypes() {
   useEffect(() => {
     apiData();
   }, []);
+  console.log(data.data.cards.length)
 
   const apiData = async () => {
     try {
@@ -25,9 +27,15 @@ function FoodTypes() {
         
         console.log(res);
         // Assuming setfoodData is a function to handle the received data
-        console.log(res.data.cards[0].card.card.imageGridCards.info)
-        console.log(res.data.cards)
-        setfoodData(res.data.cards[0].card.card.imageGridCards.info);
+        console.log(res.data.cards.length)
+        //console.log(res.data.cards[0].card.card.imageGridCards.info)
+        if(res.data.cards.length==12){
+          setfoodData(res.data.cards[0].card.card.imageGridCards.info);
+
+        }else{
+          setfoodData(finald)
+        }
+
         
     } catch (error) {
         console.error('Error fetching API data:', error);

@@ -20,6 +20,8 @@ function MainBody() {
   }, [onlineStatus]);
   
   console.log(onlineStatus)
+  console.log(window.innerWidth)
+  console.log(window.innerWidth-1)
   
   return (
     <div className="flex flex-col items-center  w-ful h-full bg-white mt-2">

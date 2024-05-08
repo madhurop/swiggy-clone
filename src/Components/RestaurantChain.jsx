@@ -41,24 +41,32 @@ function RestaurantChain(props) {
         throw new Error('Network response was not ok');
       }
       const res = await req.json();
-      
-      
-      setRestaurants(res.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      console.log(res)
+      if(res.data.cards.length==12){
+        setRestaurants(res.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       setNewRestaurants(res.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+
+      }else{
+        setRestaurants(res.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      setNewRestaurants(res.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      }
+      
+      
+      
       
     } catch (error) {
       console.error('Error fetching data:', error);
       // Handle error state, maybe display an error message to the user
     }
   }
-  if(newRestaurants.length==0){
-    // console.log("length is zero man")
-    return(
-      <ResCardShimmer/>
-    )
+  // if(newRestaurants.length==0){
+  //   // console.log("length is zero man")
+  //   return(
+  //     <ResCardShimmer/>
+  //   )
     
-   }
-  console.log(newRestaurants)
+  //  }
+  // console.log(newRestaurants)
 
   const handleSearch = () => {
     const filteredRestaurants = restaurants.filter(ev => ev.info.name.toLowerCase().includes(searchText.toLowerCase()));

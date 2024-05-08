@@ -30,14 +30,14 @@ function RestaurantMenu() {
                 throw new Error(`Failed to fetch menu: ${data.status} - ${data.statusText}`);
             }
             const resP = await data.json();
-            console.log(resP)
+            //console.log(resP)
             const N = resP?.data.cards.length;
 
             const filterResMenu = resP?.data.cards[N - 1]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(e => e.card.card["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
-            console.log(filterResMenu)
+            //console.log(filterResMenu)
             setResInfo(resP?.data.cards[2]?.card?.card?.info);
             //setResMenu(resP?.data.cards[N-1]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards);
-            console.log(resP?.data.cards[N - 1]);
+            //console.log(resP?.data.cards[N - 1]);
             setResMenu(filterResMenu)
             setResMenuNew(filterResMenu)
             //setResMenuNew(resP?.data.cards[N-1]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards);
