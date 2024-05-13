@@ -12,7 +12,7 @@ function FoodTypes() {
   useEffect(() => {
     apiData();
   }, []);
-  console.log(data.data.cards.length)
+  // console.log(data.data.cards.length)
 
   const apiData = async () => {
     try {
@@ -25,9 +25,9 @@ function FoodTypes() {
        // const req1 = await fetch("https://www.swiggy.com/collections/83647?collection_id=83647&tags=layout_CCS_Chinese&type=rcv2")
         const res = await req.json();
         
-        console.log(res);
-        // Assuming setfoodData is a function to handle the received data
-        console.log(res.data.cards.length)
+        // console.log(res);
+        // // Assuming setfoodData is a function to handle the received data
+        // console.log(res.data.cards.length)
         //console.log(res.data.cards[0].card.card.imageGridCards.info)
         if(res.data.cards.length==12){
           setfoodData(res.data.cards[0].card.card.imageGridCards.info);

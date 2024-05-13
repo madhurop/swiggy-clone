@@ -41,7 +41,7 @@ function RestaurantChain(props) {
         throw new Error('Network response was not ok');
       }
       const res = await req.json();
-      console.log(res)
+      // console.log(res)
       if(res.data.cards.length==12){
         setRestaurants(res.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       setNewRestaurants(res.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
@@ -59,13 +59,13 @@ function RestaurantChain(props) {
       // Handle error state, maybe display an error message to the user
     }
   }
-  // if(newRestaurants.length==0){
-  //   // console.log("length is zero man")
-  //   return(
-  //     <ResCardShimmer/>
-  //   )
+  if(newRestaurants.length==0){
+    // console.log("length is zero man")
+    return(
+      <ResCardShimmer/>
+    )
     
-  //  }
+   }
   // console.log(newRestaurants)
 
   const handleSearch = () => {

@@ -60,7 +60,7 @@ function CategoryMart() {
         }
     })
     const catRes = await cateGoryApi.json()
-    console.log(catRes)
+    // console.log(catRes)
   }
 
   return (

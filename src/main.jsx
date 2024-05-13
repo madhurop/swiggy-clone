@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import Offer from './Components/Offer.jsx'
@@ -15,15 +15,33 @@ import InstaMart from './Components/InstaMart.jsx'
 import InstaMartCard from './Components/InstaMartCard.jsx'
 import CategeoryMart from './Components/CategeoryMart.jsx'
 import CategoryMartHigh from './Components/CategoryMartHigh.jsx'
+import UserContext from './utils/UserContext.jsx'
+import { Provider } from 'react-redux'
+import appStore from './utils/appStore.jsx'
+import Cart from './Components/Cart.jsx'
 
 
 function App() {
+  const [userInfo, setUserInfo] = useState()
+  const {loggedInfo}=useContext(UserContext)
+  useEffect(() => {
+    const data = {
+      name: "OkBRo"
+    }
+    setUserInfo(data.name)
+  }, [])
   return (
+    <Provider store={appStore}>
     <div className=' w-screen h-screen bg-white'>
-      <NavBar />
-      <Outlet />
+
+      <UserContext.Provider value={{loggedInfo:userInfo}}>
+        <NavBar />
+        <Outlet />
+      </UserContext.Provider>
+
 
     </div>
+    </Provider>
   )
 };
 
@@ -55,20 +73,23 @@ const appRouter = createBrowserRouter([
         element: <RestaurantMenu />
       },
       {
-        path:"/collection/:collId",
-        element:<FoodCollection/>
+        path: "/collection/:collId",
+        element: <FoodCollection />
       },
       {
-        path:"/instamart",
-        element:<InstaMart/>
+        path: "/instamart",
+        element: <InstaMart />
       },
       {
-        path:"instamart/categeory/:resNodes/:instName",
-        element:<CategeoryMart/>
+        path: "instamart/categeory/:resNodes/:instName",
+        element: <CategeoryMart />
       },
       {
-        path:"instamart/item/:resNodes1/:instName1",
-        element:<CategoryMartHigh/>
+        path: "instamart/item/:resNodes1/:instName1",
+        element: <CategoryMartHigh />
+      },{
+        path:"/cart",
+        element:<Cart/>
       }
     ],
     errorElement: <Error />

@@ -19,9 +19,8 @@ function MainBody() {
     setMode(onlineStatus ? 'Online' : 'Offline');
   }, [onlineStatus]);
   
-  console.log(onlineStatus)
-  console.log(window.innerWidth)
-  console.log(window.innerWidth-1)
+  // console.log(onlineStatus)
+  
   
   return (
     <div className="flex flex-col items-center  w-ful h-full bg-white mt-2">

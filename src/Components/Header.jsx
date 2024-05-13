@@ -1,11 +1,15 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import myData from '../utils/UserContext';
+import UserContext from '../utils/UserContext';
+import { useSelector } from 'react-redux';
 
 export default function NavBar() {
-  const UserMy = useContext(myData)
-  console.log(UserMy)
+  const {loggedInfo} = useContext(UserContext)
+  // console.log(loggedInfo)
+  const fakeData={
+    name:'Madhur'
+  }
   useEffect(()=>{
     //getSwiggy()
   },[])
@@ -16,9 +20,9 @@ export default function NavBar() {
       if (response.status === 200) {
         const data = await response.json();
         //setItems(data);
-        console.log(data)
+        // console.log(data)
       } else if (response.status === 304) {
-        console.log("Items data is unchanged.");
+        // console.log("Items data is unchanged.");
       } else {
         console.error('Failed to fetch items. Status:', response.status);
       }
@@ -26,12 +30,13 @@ export default function NavBar() {
       console.error('Error fetching items:', error);
     }
   }
-  
+  const cartItems = useSelector((store)=>store.cart.items)
+  // console.log(cartItems)
 
    
   const st = "hover:text-red-500";
   return (
-    <myData.Provider value={UserMy}>
+    
       <div>
       <header className="w-full dropnav">
         <nav className=" w-full flex flex-row justify-evenly sm:justify-between bg-white border border-solid border-gray-200 shadow-2xl">
@@ -43,7 +48,8 @@ export default function NavBar() {
             <li><Link className='hover:text-red-500 text-sm sm:text:md' to="/instamart">InstaMart</Link></li>
             <li><Link className='hover:text-red-500 text-sm sm:text:md' to="/help">Help</Link></li>
             <li><Link className='hover:text-red-500 text-sm sm:text:md' to="#">Sign In</Link></li>
-            <li><Link className='hover:text-red-500 text-sm sm:text:md' to="#">Cart</Link></li>
+            <li><Link className='hover:text-red-500 text-sm sm:text:md' to="/cart">Cart ({cartItems.length})</Link></li>
+            <li><Link className='hover:text-red-500 text-sm sm:text:md' to="#">{loggedInfo}</Link></li>
             
           </ul>
         </nav>
@@ -51,7 +57,7 @@ export default function NavBar() {
       
     </div>
 
-      </myData.Provider>
+      
     
   )
 }

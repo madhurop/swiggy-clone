@@ -13,7 +13,7 @@ function CategoryMartHigh() {
 
     const { resNodes1, instName1 } = useParams();
     const spilName = instName1.split(" ").join("+");
-    console.log(spilName)
+    // console.log(spilName)
 
     useEffect(() => {
         if (resNodes1 && spilName) {
@@ -52,7 +52,7 @@ function CategoryMartHigh() {
                 }
         })
         const response = await cateGoryApi.json()
-        console.log(response)
+        // console.log(response)
         setSubMart(response.data.filters);
         setCateMart(response.data.widgets[1].data);
     }
