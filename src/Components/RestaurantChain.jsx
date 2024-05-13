@@ -89,7 +89,7 @@ function RestaurantChain(props) {
         
       </div>
 
-      <div className={`flex ${props.ch} ml-5 mt-3 mb-3 gap-6 justify-evenly w-auto h-auto scrollbar-hidden dropResDiv`}>
+      <div className={`flex ${props.ch} sm:ml-5 mt-3 mb-3 gap-6 justify-evenly w-auto h-auto scrollbar-hidden dropResDiv`}>
         {newRestaurants.map((restaurant, index) => (
           <Link to={"/restaurant/"+restaurant.info.id} key={index} ><RestaurantCards  restData={restaurant.info} /></Link>
 
