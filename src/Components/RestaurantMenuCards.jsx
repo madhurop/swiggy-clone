@@ -5,8 +5,8 @@ import { addItems } from '../utils/cartSlice';
 import { removeItems } from '../utils/cartSlice';
 
 
-function RestaurantMenuCards({ menu, imgData, toggle, key }) {
-    console.log(key)
+function RestaurantMenuCards({ menu, imgData, toggle}) {
+    // console.log(key)
     const AddMahiti = useContext(myData)
     const resMenuImg = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/";;
     const dispatch = useDispatch()
@@ -14,8 +14,8 @@ function RestaurantMenuCards({ menu, imgData, toggle, key }) {
     const handleAddItems = (menu) => {
         dispatch(addItems(menu))
     }
-    const handleRemoveItems = () => {
-        removeDispatch(removeItems(menu.id))
+    const handleRemoveItems = (menu) => {
+        removeDispatch(removeItems(menu))
         
 
     }
@@ -34,7 +34,7 @@ function RestaurantMenuCards({ menu, imgData, toggle, key }) {
                     <img src={resMenuImg + menu.imageId} alt="" className="w-full h-full  rounded-xl  shadow-xl border-b-2" />
                 </div>
                 <div className="w-full h-2/6  flex justify-center items-center">
-                {toggle ? <button className=" bg-black w-4/12 text-white text-sm p-2  rounded-xl " onClick={() => handleRemoveItems(menu.id)}>Clear To Cart</button> :
+                {toggle ? <button className=" bg-black w-4/12 text-white text-sm p-2  rounded-xl " onClick={() => handleRemoveItems(menu)}>Clear To Cart</button> :
                     <button className=" bg-black w-/12 text-white text-sm p-2  rounded-xl " onClick={() => handleAddItems(menu)}>Add From Cart</button>}
                     </div>
 

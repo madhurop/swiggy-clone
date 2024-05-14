@@ -4,6 +4,9 @@ import MenuShimmer from '../ShimmerUI/MenuShimmer';
 import Variants from './Variants';
 import InstaMart from './InstaMart';
 import RestaurantMenuCards from './RestaurantMenuCards';
+import { useDispatch, useSelector } from 'react-redux';
+import dataSlice from '../utils/dataSlice';
+import { addData } from '../utils/dataSlice';
 
 function RestaurantMenu() {
     const { resId } = useParams();
@@ -13,6 +16,13 @@ function RestaurantMenu() {
     const [searchMenu, setSearchMenu] = useState("");
     const [sortRes, setSortRes] = useState()
     const [sortResState, setSortResState] = useState(false)
+    const selectData=useSelector((store)=>store.data.item)
+    
+    const dispatch =useDispatch()
+    const handleData=()=>{
+        dispatch(addData())
+    }
+
 
     useEffect(() => {
         fetchMenu();
@@ -129,7 +139,7 @@ function RestaurantMenu() {
                     <div className="w-full md:w-6/12 flex justify-evenly">
                         <button className="w-20 p-2 h-10 rounded-xl hover:text-white bg-green-500" onClick={handleVegSearch}>Veg</button>
                         <button className="w-20 p-2 h-10 rounded-xl hover:text-white bg-red-500 text-nowrap" onClick={handleNonVegSearch}>Non-Veg</button>
-                        <button className="w-20 p-2 h-10 rounded-xl bg-gray-300">Bestseller</button>
+                        <button className="w-20 p-2 h-10 rounded-xl bg-gray-300" onClick={handleData}>Bestseller</button>
                     </div>
                 </div>
 

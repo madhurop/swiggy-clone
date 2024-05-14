@@ -71,7 +71,7 @@ function FoodTypes() {
     <div className=" w-3/4   item-center border-b border-solid border-black custom ">
       <h1 className="ml-5 text:xl sm:text-2xl font-bold">Whats on your mind?</h1>
       <UserClass fakeData={"Madhur Borade"}/>
-      <div className="flex flex-no-wrap overflow-x-auto  md:ml-5 mt-3 mb-3   gap-6 justify-around w-full h-48  overflow-hidden scrollbar-hidden dropFoodDiv">
+      <div className="flex flex-no-wrap   md:ml-5 mt-3 mb-3   gap-6 justify-around w-full h-48  overflow-hidden overflow-x-auto scrollbar-hidden dropFoodDiv">
         {foodData.map((foods, index) => (
           
           <Link key={index} to={`/collection/${encodeURIComponent(foods.action.link)}`}>
