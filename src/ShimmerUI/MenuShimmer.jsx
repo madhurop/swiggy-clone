@@ -7,7 +7,7 @@ function MenuShimmer() {
     const sp3 = "                      ";
     return (
         <div className='w-full h-full flex justify-center bg-white '>
-            <div className="w-7/12 h-full flex flex-col items-center justify-evenly shimmer ">
+            <div className="w-full lg:w-7/12 h-full flex flex-col items-center justify-evenly shimmer ">
                 <div className="w-full mt-5 bg-gray-200">
                     {/* Use name outside the fetchMenu function */}
                     <h2 className="text-2xl font-bold bg-gray-200">{sp1}</h2>

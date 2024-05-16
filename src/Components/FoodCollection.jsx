@@ -58,11 +58,11 @@ function FoodCollection() {
       <div className='mt-10 headText'>
         <h1 className="font-bold sm:text-3xl text-xl">{food?.title}</h1>
         <h5 className="text-sm sm:text-md text-gray-600">{food?.description}</h5>
-        <div className="flex flex-row justify-between w-full sm:w-6/12  mt-3">
-          <button className="bg-gray-200 text-sm sm:text-lg text-center shadow-xl w-auto p-2 h-10 rounded-xl ">Pure Veg</button>
-          <button className="bg-gray-200 text-sm sm:text-lg text-center shadow-xl w-auto p-2 h-10 rounded-xl ">Less Than 30 Min</button>
-          <button className="bg-gray-200 text-sm sm:text-lg text-center shadow-xl w-auto p-2 h-10 rounded-xl ">300-600</button>
-          <button className="bg-gray-200 text-sm sm:text-lg text-center shadow-xl w-auto p-2 h-10 rounded-xl ">Less than 300</button>
+        <div className="flex flex-row justify-between w-full lg:w-6/12  mt-3 gap-x-2">
+          <button className="bg-gray-200 text-sm md:text-md lg:text-lg text-center shadow-xl w-auto p-2 h-10 rounded-xl ">Pure Veg</button>
+          <button className="bg-gray-200 text-sm md:text-md lg:text-lg text-center shadow-xl w-auto p-2 h-10 rounded-xl ">Less Than 30 Min</button>
+          <button className="bg-gray-200 text-sm md:text-md lg:text-lg text-center shadow-xl w-auto p-2 h-10 rounded-xl ">300-600</button>
+          <button className="bg-gray-200 text-sm md:text-md lg:text-lg text-center shadow-xl w-auto p-2 h-10 rounded-xl ">Less than 300</button>
         </div>
         <h1 className='mt-3'>{food.count} Restaurants to explore</h1>
         <div className="w-11/12 flex flex-wrap gap-6 justify-evenly mt-5 conFoodRes">

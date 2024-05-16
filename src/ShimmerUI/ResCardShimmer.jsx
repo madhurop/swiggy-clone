@@ -7,7 +7,7 @@ function ResCardShimmer() {
     <div className="w-full">
       <div className=" shimmer w-4/12 h-8 rounded mt-10 ml-10 "></div>
       <div className=" shimmer w-3/12 h-6  mt-3 rounded ml-10 "></div>
-      <div className="flex flex-row flex-wrap ml-5 mt-3 mb-3  gap-6 justify-evenly w-full  scrollbar-hidden">
+      <div className="flex flex-col gap-y-2  lg:flex-row flex-wrap lg:ml-5 mt-1 lg:mt-3 lg:mb-3  lg:gap-6 lg:justify-evenly w-full  scrollbar-hidden">
 
         <CardShimmer />
         <CardShimmer />

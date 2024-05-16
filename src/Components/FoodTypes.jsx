@@ -53,8 +53,8 @@ function FoodTypes() {
   const myurl = "https://t.ly/EHT59"  // const myurl = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/v1675667625/PC_Creative%20refresh/Biryani_2.png"
   if (foodData.length == 0) {
     return(
-      <div className=" w-3/4   item-center border-b border-solid border-black ">
-        <div className="flex flex-no-wrap overflow-x-auto  ml-5 mt-3 mb-3   gap-6 justify-evenly w-auto h-48  overflow-hidden scrollbar-hidden">
+      <div className="w-full  lg:w-3/4   item-center border-b border-solid border-black  ">
+        <div className="w-full flex flex-row  overflow-hidden overflow-x-auto  lg:ml-5 mt-3 mb-3    lg:gap-6 justify-evenly h-32 lg:h-48   scrollbar-hidden">
           <ShimmerFood/>
           <ShimmerFood/>
           <ShimmerFood/>
@@ -71,7 +71,7 @@ function FoodTypes() {
     <div className=" w-3/4   item-center border-b border-solid border-black custom ">
       <h1 className="ml-5 text:xl sm:text-2xl font-bold">Whats on your mind?</h1>
       <UserClass fakeData={"Madhur Borade"}/>
-      <div className="flex flex-no-wrap   md:ml-5 mt-3 mb-3   gap-6 justify-around w-full h-48  overflow-hidden overflow-x-auto scrollbar-hidden dropFoodDiv">
+      <div className="flex flex-no-wrap   md:ml-5 mt-3 mb-3   gap-6 justify-around w-full h-auto  overflow-hidden overflow-x-auto scrollbar-hidden dropFoodDiv">
         {foodData.map((foods, index) => (
           
           <Link key={index} to={`/collection/${encodeURIComponent(foods.action.link)}`}>

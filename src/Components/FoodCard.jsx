@@ -8,7 +8,7 @@ function FoodCard(props) {
     
     return (
 
-        <div key={id} className="w-36  h-32 rounded-xl text-center imgShadow dropFoodCard">
+        <div key={id} className="w-28 md:w-32 lg:w-36  h-auto rounded-xl text-center imgShadow dropFoodCard">
             
                 <img className="rounded-xl boxShad " src={myImg} />
             
