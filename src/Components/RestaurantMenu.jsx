@@ -94,39 +94,47 @@ function RestaurantMenu() {
     }
 
     return (
-        <div className='w-full h-full overflow-hidden overflow-y-auto flex border border-black justify-center bg-white md:w-full m-2'>
+        <div className="w-full h-full overflow-hidden overflow-y-auto flex  justify-center bg-white md:w-full m-2">
             <div className="w-full md:w-7/12 min-h-9/12 flex flex-col items-center justify-evenly">
-                <div className="w-full mt-5 ">
-                    <h2 className="text-lg sm:text-2xl  font-bold">{name}</h2>
-                </div>
-                <div className="w-full h-40 bg-white border border-solid border-gray-200 rounded-xl flex flex-row items-center justify-evenly pl-3 shadow-xl mt-5 ">
-                    <div className="h-full w-3/4 flex flex-col justify-evenly">
-
-                        <h6 className="font-bold"> {avgRating} {totalRatingString}  {costForTwoMessage}</h6>
-                        <p className="font-bold ">{cuisines}</p>
-                        <p className="font-bold">Outlet <span className='font-light'>{locality}</span></p>
-                        <p className="font-bold">{areaName}</p>
-                    </div>
-                    <img className='w-1/4 h-5/6 rounded-xl' src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId} alt="" />
-                </div>
-                <div className="w-full flex justify-center mt-5">
-                    <h4 className="font-bold text-xl">Menu Card</h4>
-                </div>
-                <div className="w-full flex justify-center mt-5">
-                    <input type="text" placeholder='Search For Dishes' className="w-full h-10 rounded-xl bg-gray-100 border-2 border-solid border-gray-200 shadow-lg" value={searchMenu} onInput={(e) => setSearchMenu(e.target.value)} />
-                </div>
+                {/* Restaurant Info Section */}
                 <div className="w-full mt-5">
-                    <div className="w-full md:w-6/12 flex justify-evenly">
+                    {/* Restaurant Name */}
+                    <h2 className="text-lg sm:text-2xl font-bold">{resInfo.name}</h2>
+                </div>
+                {/* Restaurant Details Section */}
+                <div className="w-full h-40 bg-white border border-solid border-gray-200 rounded-xl flex flex-row items-center justify-evenly pl-3 shadow-xl mt-5 ">
+                    {/* Restaurant Details */}
+                    {/* Adjust the grid layout based on screen size */}
+                    <div className="h-full w-full md:w-3/4 grid grid-cols-1 md:grid-cols-2 gap-y-2 md:gap-x-4 md:gap-y-0">
+                        <div className="flex flex-col justify-evenly">
+                            <h6 className="font-bold">{resInfo.avgRating} {resInfo.totalRatingString} {resInfo.costForTwoMessage}</h6>
+                            <p className="font-bold">{resInfo.cuisines}</p>
+                        </div>
+                        <div className="flex flex-col justify-evenly">
+                            <p className="font-bold">Outlet <span className='font-light'>{resInfo.locality}</span></p>
+                            <p className="font-bold">{resInfo.areaName}</p>
+                        </div>
+                    </div>
+                    {/* Restaurant Image */}
+                    <img className='w-1/4 h-5/6 rounded-xl hidden md:block' src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + resInfo.cloudinaryImageId} alt="" />
+                </div>
+                {/* Menu Section */}
+                <div className="w-full flex flex-col items-center mt-5">
+                    <h4 className="font-bold text-xl">Menu Card</h4>
+                    <input type="text" placeholder='Search For Dishes' className="w-full md:w-6/12 h-10 rounded-xl bg-gray-100 border-2 border-solid border-gray-200 shadow-lg mt-3" value={searchMenu} onInput={(e) => setSearchMenu(e.target.value)} />
+                    <div className="w-full md:w-6/12 flex justify-between mt-3">
                         <button className="w-20 p-2 h-10 rounded-xl hover:text-white bg-green-500" onClick={handleVegSearch}>Veg</button>
                         <button className="w-20 p-2 h-10 rounded-xl hover:text-white bg-red-500 text-nowrap" onClick={handleNonVegSearch}>Non-Veg</button>
                         <button className="w-20 p-2 h-10 rounded-xl bg-gray-300" onClick={handleData}>Bestseller</button>
                     </div>
                 </div>
-                <div className="w-full flex flex-col justify-evenly  mt-5 ">
+                {/* Render Menu Cards */}
+                <div className="w-full mt-5">
+                    {/* Check if sortResState is true, if true render sorted menu, otherwise render default menu */}
                     {sortResState ? (
                         sortRes.map((thali, index) => (
                             thali.map((subThali, index) => (
-                                <RestaurantMenuCards menu={subThali.card.info} key={index} imgData={cloudinaryImageId} />
+                                <RestaurantMenuCards menu={subThali.card.info} key={index} imgData={resInfo.cloudinaryImageId} />
                             ))
                         ))
                     ) : (
@@ -136,15 +144,13 @@ function RestaurantMenu() {
                                     <h2 className="font-bold text-lg">{menu.card.card.title}</h2>
                                 </div>
                                 {menu.card.card.itemCards.map((subMenu, index) => (
-                                    <RestaurantMenuCards menu={subMenu.card.info} key={index} imgData={cloudinaryImageId} />
+                                    <RestaurantMenuCards menu={subMenu.card.info} key={index} imgData={resInfo.cloudinaryImageId} />
                                 ))}
                             </div>
                         ))
                     )}
                 </div>
-
             </div>
-
         </div>
     );
 }
