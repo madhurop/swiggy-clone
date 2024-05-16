@@ -11,18 +11,18 @@ export default function NavBar() {
     name:'Madhur'
   }
   useEffect(()=>{
-    //getSwiggy()
+    getSwiggy()
   },[])
 
   async function getSwiggy() {
     try {
-      const response = await fetch("/api/items");
+      const response = await fetch("/vapi/items");
       if (response.status === 200) {
         const data = await response.json();
         //setItems(data);
-        // console.log(data)
+         console.log(data)
       } else if (response.status === 304) {
-        // console.log("Items data is unchanged.");
+        console.log("Items data is unchanged.");
       } else {
         console.error('Failed to fetch items. Status:', response.status);
       }

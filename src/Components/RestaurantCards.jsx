@@ -28,7 +28,7 @@ function RestaurantCards({ restData }) {
                 <h1 className="sm:text-lg font-bold text-sm">{avgRating} {sla.slaString}</h1>
                 <p className="sm:text-lg overflow-hidden whitespace-nowrap text-ellipsis text-xs">{cuisines1}</p>
                 <p className='sm:text-lg text-xs'>{areaName}</p>
-                <p className="font-bold">{loggedInfo}</p>
+                
             </div>
         </div>
     );

@@ -16,13 +16,12 @@ function RestaurantMenu() {
     const [searchMenu, setSearchMenu] = useState("");
     const [sortRes, setSortRes] = useState()
     const [sortResState, setSortResState] = useState(false)
-    const selectData=useSelector((store)=>store.data.item)
-    
-    const dispatch =useDispatch()
-    const handleData=()=>{
+    const selectData = useSelector((store) => store.data.item)
+
+    const dispatch = useDispatch()
+    const handleData = () => {
         dispatch(addData())
     }
-
 
     useEffect(() => {
         fetchMenu();
@@ -40,17 +39,11 @@ function RestaurantMenu() {
                 throw new Error(`Failed to fetch menu: ${data.status} - ${data.statusText}`);
             }
             const resP = await data.json();
-            //console.log(resP)
             const N = resP?.data.cards.length;
-
             const filterResMenu = resP?.data.cards[N - 1]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(e => e.card.card["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
-            //console.log(filterResMenu)
             setResInfo(resP?.data.cards[2]?.card?.card?.info);
-            //setResMenu(resP?.data.cards[N-1]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards);
-            //console.log(resP?.data.cards[N - 1]);
             setResMenu(filterResMenu)
             setResMenuNew(filterResMenu)
-            //setResMenuNew(resP?.data.cards[N-1]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards);
         } catch (error) {
             console.error('Error fetching menu:', error);
         }
@@ -67,9 +60,6 @@ function RestaurantMenu() {
         return () => clearTimeout(delaySearch);
     }, [searchMenu]);
 
-    // const handleResSearch = () => {
-    //     const filteredMenu = resMenuNew.filter(item => item.card.info.name.toLowerCase().includes(searchMenu.toLowerCase()));
-    // };
     const handleResSearch = () => {
         const filteredMenu = resMenuNew
             .map(item =>
@@ -84,15 +74,9 @@ function RestaurantMenu() {
             setSortResState(false)
         } else {
             setSortResState(true)
-
         }
         setSortRes(filteredMenu)
-
     };
-
-    //handleResSearch1(); // Call the function to execute it
-
-
 
     const handleVegSearch = () => {
         const filteredVegMenu = resMenuNew.filter(item => item.card.info.itemAttribute.vegClassifier.toLowerCase() === "veg");
@@ -115,8 +99,6 @@ function RestaurantMenu() {
                 <div className="w-full mt-5 ">
                     <h2 className="text-lg sm:text-2xl  font-bold">{name}</h2>
                 </div>
-
-
                 <div className="w-full h-40 bg-white border border-solid border-gray-200 rounded-xl flex flex-row items-center justify-evenly pl-3 shadow-xl mt-5 ">
                     <div className="h-full w-3/4 flex flex-col justify-evenly">
 
@@ -126,7 +108,6 @@ function RestaurantMenu() {
                         <p className="font-bold">{areaName}</p>
                     </div>
                     <img className='w-1/4 h-5/6 rounded-xl' src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId} alt="" />
-
                 </div>
                 <div className="w-full flex justify-center mt-5">
                     <h4 className="font-bold text-xl">Menu Card</h4>
@@ -134,7 +115,6 @@ function RestaurantMenu() {
                 <div className="w-full flex justify-center mt-5">
                     <input type="text" placeholder='Search For Dishes' className="w-full h-10 rounded-xl bg-gray-100 border-2 border-solid border-gray-200 shadow-lg" value={searchMenu} onInput={(e) => setSearchMenu(e.target.value)} />
                 </div>
-
                 <div className="w-full mt-5">
                     <div className="w-full md:w-6/12 flex justify-evenly">
                         <button className="w-20 p-2 h-10 rounded-xl hover:text-white bg-green-500" onClick={handleVegSearch}>Veg</button>
@@ -142,11 +122,10 @@ function RestaurantMenu() {
                         <button className="w-20 p-2 h-10 rounded-xl bg-gray-300" onClick={handleData}>Bestseller</button>
                     </div>
                 </div>
-
-                <div className="w-full justify-evenly  mt-5 ">
+                <div className="w-full flex flex-col justify-evenly  mt-5 ">
                     {sortResState ? (
-                        sortRes.map((thali,index)=>(
-                            thali.map((subThali,index)=>(
+                        sortRes.map((thali, index) => (
+                            thali.map((subThali, index) => (
                                 <RestaurantMenuCards menu={subThali.card.info} key={index} imgData={cloudinaryImageId} />
                             ))
                         ))

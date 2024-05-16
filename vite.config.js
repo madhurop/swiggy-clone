@@ -13,6 +13,7 @@ export default defineConfig({
           'Access-Control-Allow-Origin': '*',
         },
       },
+      "/vapi":"http://localhost:3000"
     },
   }
 })

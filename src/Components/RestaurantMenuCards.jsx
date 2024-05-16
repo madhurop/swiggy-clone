@@ -20,7 +20,7 @@ function RestaurantMenuCards({ menu, imgData, toggle}) {
 
     }
     return (
-        <div className="w-full h-52 sm:min-h-38 flex flex-row justify-between items-center border-2 border-solid border-gray-200 rounded-xl pl-3 shadow-xl mt-5 ">
+        <div className="w-full h-52 sm:min-h-38 flex flex-row justify-between items-center overflow-hidden border-2 border-solid border-gray-200 rounded-xl pl-3 shadow-xl mt-5 ">
             <div className="w-3/4 sm:w-full flex flex-col justify-evenly pb-5 mt-5 overflow-hidden">
                 <h2 className="">{menu.itemAttribute.vegClassifier}</h2>
                 <h1 className="font-bold">{menu.name}</h1>
