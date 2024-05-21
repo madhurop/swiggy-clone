@@ -42,7 +42,7 @@ function RestaurantMenu() {
             const N = resP?.data.cards.length;
             const filterResMenu = resP?.data.cards[N - 1]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(e => e.card.card["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
             setResInfo(resP?.data.cards[2]?.card?.card?.info);
-            console.log("ResMenu",filterResMenu)
+            console.log("ResMenu", filterResMenu)
             setResMenu(filterResMenu)
             setResMenuNew(filterResMenu)
         } catch (error) {
@@ -84,7 +84,7 @@ function RestaurantMenu() {
         const filteredMenu = resMenuNew
             .map(item =>
                 item.card.card.itemCards.filter(sub =>
-                    sub.card.info.itemAttribute.vegClassifier==mb
+                    sub.card.info.itemAttribute.vegClassifier == mb
                 )
             )
             .filter(filteredItem => filteredItem.length > 0);
@@ -137,11 +137,14 @@ function RestaurantMenu() {
                 <div className="w-full flex flex-col items-center mt-5">
                     <h4 className="font-bold text-xl">Menu Card</h4>
                     <input type="text" placeholder='Search For Dishes' className="w-full md:w-6/12 h-10 rounded-xl bg-gray-100 border-2 border-solid border-gray-200 shadow-lg mt-3" value={searchMenu} onInput={(e) => setSearchMenu(e.target.value)} />
-                    <div className="w-full md:w-6/12 flex justify-between mt-3">
-                        <button className="w-20 p-2 h-10 rounded-xl hover:text-white bg-green-500" onClick={()=>handleItemSearch("VEG")}>Veg</button>
-                        <button className="w-20 p-2 h-10 rounded-xl hover:text-white bg-red-500 text-nowrap" onClick={()=>handleItemSearch("NONVEG")}>Non-Veg</button>
-                        <button className="w-20 p-2 h-10 rounded-xl bg-gray-300" onClick={handleData}>Bestseller</button>
-                    </div>
+                    {!resInfo.veg && (
+                        <div className="w-full md:w-6/12 flex justify-between mt-3">
+                            <button className="w-20 p-2 h-10 rounded-xl hover:text-white bg-green-500" onClick={() => handleItemSearch("VEG")}>Veg</button>
+
+                            <button className="w-20 p-2 h-10 rounded-xl hover:text-white bg-red-500 text-nowrap" onClick={() => handleItemSearch("NONVEG")}>Non-Veg</button>
+                            {/* <button className="w-20 p-2 h-10 rounded-xl bg-gray-300" onClick={handleData}>Bestseller</button> */}
+                        </div>
+                    )}
                 </div>
                 {/* Render Menu Cards */}
                 <div className="w-full mt-5">

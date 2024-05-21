@@ -4,8 +4,11 @@ import UserContext from '../utils/UserContext';
 function RestaurantCards({ restData }) {
     const{loggedInfo}=useContext(UserContext)
 
-    const { name, cloudinaryImageId, cuisines, areaName, avgRating, sla } = restData;
+    const { name, cloudinaryImageId, cuisines, areaName, avgRating, sla,veg } = restData;
     const cuisines1 = cuisines.join(" ");
+    
+        // console.log(veg)
+    
     // console.log(cuisines)
 
     // Constructing the image URL

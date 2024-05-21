@@ -32,7 +32,7 @@ function App() {
   }, [])
   return (
     <Provider store={appStore}>
-    <div className=' w-screen h-screen  bg-white'>
+    <div className=' w-screen h-screen  bg-white scrollbar-hidden'>
 
       <UserContext.Provider value={{loggedInfo:userInfo}}>
         <NavBar />
