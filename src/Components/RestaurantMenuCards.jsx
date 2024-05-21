@@ -34,8 +34,8 @@ function RestaurantMenuCards({ menu, imgData, toggle}) {
                     <img src={resMenuImg + menu.imageId} alt="" className="w-full h-full  rounded-xl  shadow-xl border-b-2" />
                 </div>
                 <div className="w-full h-2/6  flex justify-center items-center">
-                {toggle ? <button className=" bg-black w-4/12 text-white text-sm p-2  rounded-xl " onClick={() => handleRemoveItems(menu)}>Clear To Cart</button> :
-                    <button className=" bg-black w-/12 text-white text-sm p-2  rounded-xl " onClick={() => handleAddItems(menu)}>Add From Cart</button>}
+                {toggle ? <button className=" bg-black  text-white text-sm p-2  rounded-xl " onClick={() => handleRemoveItems(menu)}>Clear From Cart</button> :
+                    <button className=" bg-black  text-white text-sm p-2  rounded-xl " onClick={() => handleAddItems(menu)}>Add To Cart</button>}
                     </div>
 
             </div>
