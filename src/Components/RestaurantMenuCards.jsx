@@ -3,19 +3,26 @@ import myData from '../utils/UserContext'
 import { useDispatch } from 'react-redux';
 import { addItems } from '../utils/cartSlice';
 import { removeItems } from '../utils/cartSlice';
+import { ToastContainer,toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function RestaurantMenuCards({ menu, imgData, toggle}) {
     // console.log(key)
     const AddMahiti = useContext(myData)
-    const resMenuImg = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/";;
+    const resMenuImg = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/";
+    const notify =(menu)=>toast(`${menu.name} Added To Cart`)
+   
     const dispatch = useDispatch()
     const removeDispatch = useDispatch()
     const handleAddItems = (menu) => {
         dispatch(addItems(menu))
+        notify(menu)
     }
     const handleRemoveItems = (menu) => {
-        removeDispatch(removeItems(menu))
+        console.log(menu.id)
+        removeDispatch(removeItems(menu.id))
+       
         
 
     }
@@ -34,8 +41,9 @@ function RestaurantMenuCards({ menu, imgData, toggle}) {
                     <img src={resMenuImg + menu.imageId} alt="" className="w-full h-full  rounded-xl  shadow-xl border-b-2" />
                 </div>
                 <div className="w-full h-2/6  flex justify-center items-center">
+                    <ToastContainer position="top-center"/>
                 {toggle ? <button className=" bg-black  text-white text-sm p-2  rounded-xl " onClick={() => handleRemoveItems(menu)}>Clear From Cart</button> :
-                    <button className=" bg-black  text-white text-sm p-2  rounded-xl " onClick={() => handleAddItems(menu)}>Add To Cart</button>}
+                    <button className=" bg-black  text-white text-sm p-2  rounded-xl "  onClick={() => handleAddItems(menu)}>Add To Cart</button>}
                     </div>
 
             </div>
