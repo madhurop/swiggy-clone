@@ -30,7 +30,7 @@ function Cart() {
                     Clear Cart
                 </button>
                 
-                <div className="border border-red-400 flex flex-col overflow-hidden oveflow-y-auto">
+                <div className="flex flex-col overflow-hidden oveflow-y-auto">
                     {cartItems.map((menu, index) => (
                         <RestaurantMenuCards key={index} menu={menu} toggle={true} />
                     ))}
