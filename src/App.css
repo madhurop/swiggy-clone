@@ -1,6 +1,15 @@
 .scrollbar-hidden::-webkit-scrollbar {
     display: none;
 }
+.sBar {
+  overflow: -moz-scrollbars-none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.sBar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
 .boxShad{
     box-shadow: 2px 2px 10px rgb(224, 219, 219);
 }
