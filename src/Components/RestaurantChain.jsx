@@ -44,10 +44,12 @@ function RestaurantChain(props) {
       // console.log(res)
       if (res.data.cards.length == 12) {
         setRestaurants(res.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        console.log(res.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setNewRestaurants(res.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
       } else {
         setRestaurants(res.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        console.log(res.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setNewRestaurants(res.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       }
 
@@ -77,8 +79,9 @@ function RestaurantChain(props) {
       const filteredRestaurants = restaurants.filter(ev => ev.info.name.toLowerCase().includes(searchText.toLowerCase()));
       setNewRestaurants(filteredRestaurants);
     }
+    }
 
-  };
+  ;
 
   return (
     <div className=" w-3/4 item-center bg-white border-b border-solid border-black h-auto custom">
@@ -86,11 +89,11 @@ function RestaurantChain(props) {
       <h1 className="ml-5 text-2xl font-bold">What's on your Restaurant?</h1>
       <div className="flex flex-row items-center justify-evenly">
         
-          <input placeholder='Search Your Restaurant' type="text" className=" w-2/4  h-10 bg-gray-200  border border-solid border-gray-200   rounded-xl" value={searchText} onChange={(e) => setSearchText(e.target.value)} onInput={handleSearch} />
+          <input placeholder='Search Your Restaurant' type="text" className=" w-2/4  h-10 bg-orange-400 text-white font-bold  border border-solid border-gray-200   rounded-xl p-2" value={searchText} onChange={(e) => setSearchText(e.target.value)} onInput={handleSearch} />
           
 
-        <button className="h-10 p-2 rounded-xl bg-gray-200 boxShad  text-sm lg:text-md md:text-md" onClick={filterTopRatedRestaurants}>4+ Rating</button>
-        <button className="h-10 p-2 rounded-xl bg-gray-200 boxShad  text-sm lg:text-md md:text-md" onClick={filterDelivery}>Fast Delivery</button>
+        <button className="h-10 p-2 rounded-xl bg-orange-400 boxShad font-bold  text-sm lg:text-md md:text-md" onClick={filterTopRatedRestaurants}>4+ Rating</button>
+        <button className="h-10 p-2 rounded-xl bg-orange-400 boxShad font-bold  text-sm lg:text-md md:text-md" onClick={filterDelivery}>Fast Delivery</button>
 
       </div>
 

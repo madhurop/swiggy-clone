@@ -66,7 +66,7 @@ function CategoryMart() {
   return (
     <div className='w-full h-screen flex justify-center bg-gray-200'>
       <div className="w-3/4 flex flex-col bg-gray-300">
-        <div className="w-full h-24 bg-gray-400">Madhur</div>
+        
         <div className="w-full h-full flex bg-gray-100 flex-row">
           <div className="w-1/4 h-full flex flex-col overflow-y-auto overflow-hidden items-center mt-2 gap-4 bg-gray-100 scrollbar-hidden">
             {subMart.map((martItem, index) => (

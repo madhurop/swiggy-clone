@@ -12,7 +12,7 @@ function MainBody() {
 
   useEffect(() => {
     const notify = () => toast('You Are ' + mode);
-    notify();
+    // notify();
   }, [mode]);
 
   useEffect(() => {

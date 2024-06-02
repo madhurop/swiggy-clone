@@ -47,11 +47,12 @@ export default function NavBar() {
             <li><Link className='hover:text-red-500 text-sm sm:text:md' to="/">Home</Link></li>
             <li><Link className='hover:text-red-500 text-sm sm:text:md' to="/instamart">InstaMart</Link></li>
             <li><Link className='hover:text-red-500 text-sm sm:text:md' to="/help">Help</Link></li>
-            <li><Link className='hover:text-red-500 text-sm sm:text:md' to="#">Sign In</Link></li>
+            <li><Link className='hover:text-red-500 text-sm sm:text:md' to="signin">Sign In</Link></li>
             <li><Link className='hover:text-red-500 text-sm sm:text:md' to="/cart">Cart ({cartItems.length})</Link></li>
             {/* <li><Link className='hover:text-red-500 text-sm sm:text:md' to="#">{loggedInfo}</Link></li> */}
             
           </ul>
+          
         </nav>
       </header>
       

@@ -44,15 +44,16 @@ function CategoryMartHigh() {
             // Handle error state
         }
     };
-
+    console.log(spilName)
+    console.log(resNodes1)
     const subCategory = async () => {
-        const cateGoryApi = await fetch(`https://proxy.cors.sh/https://www.swiggy.com/api/instamart/category-listing?categoryName=${spilName}&custom_back=true&filterId=${resNodes1}&storeId=649837&taxonomyType=All+Listing`,{
+        const cateGoryApi = await fetch(`https://proxy.cors.sh/https://www.swiggy.com/api/instamart/category-listing?categoryName=${spilName}&custom_back=true&filterId=${resNodes1}&storeId=649837&taxonomyType=All+Listing`, {
             headers: {
                 'x-cors-api-key': 'temp_5851881bfc243383ecc5830f30b80393'
-                }
+            }
         })
         const response = await cateGoryApi.json()
-        // console.log(response)
+        console.log(response)
         setSubMart(response.data.filters);
         setCateMart(response.data.widgets[1].data);
     }
@@ -63,7 +64,7 @@ function CategoryMartHigh() {
                 <div className="w-full  h-full flex bg-gray-100 flex-row">
                     <div className="w-1/4 h-full flex flex-col overflow-y-auto overflow-hidden items-center mt-4 gap-4 bg-gray-100 scrollbar-hidden border-r-2 border-r-black ">
                         {subMart.map((martItem, index) => (
-                            <Link to={"/instamart/item/"+martItem.id+"/"+spilName} key={index}><InstaMartCard  list={martItem}  /></Link>
+                            <Link to={"/instamart/item/" + martItem.id + "/" + spilName} key={index}><InstaMartCard list={martItem} /></Link>
                         ))}
                     </div>
                     <div className="w-3/4 h-full flex flex-row flex-wrap gap-4 justify-evenly bg-gray-100 overflow-y-auto overflow-hidden scrollbar-hidden mt-4">{

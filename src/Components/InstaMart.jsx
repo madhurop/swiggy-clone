@@ -32,7 +32,7 @@ if(martList.length==0){
   
   return (
     <div className='bg-white w-full flex  justify-center'>
-      <div className="bg-white w-3/4 flex flex-col items-center">
+      <div className="bg-white w-full lg:w-3/4 flex flex-col items-center">
         <h1 className='font-bold text-xl mb-4 '>Instamart</h1>
         <input className="w-5/6 p-5 h-10 mb-4  border border-gray-200 rounded-lg shadow-lg" type="text" placeholder='Search Here' />
         <div className="bg-white flex-wrap w-full flex flex-row gap-2 gap-y-5 justify-evenly">

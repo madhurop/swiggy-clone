@@ -19,6 +19,7 @@ import UserContext from './utils/UserContext.jsx'
 import { Provider } from 'react-redux'
 import appStore from './utils/appStore.jsx'
 import Cart from './Components/Cart.jsx'
+import SignIn from './Components/SignIn.jsx'
 
 
 function App() {
@@ -90,6 +91,9 @@ const appRouter = createBrowserRouter([
       },{
         path:"/cart",
         element:<Cart/>
+      },{
+        path:"/signin",
+        element:<SignIn/>
       }
     ],
     errorElement: <Error />

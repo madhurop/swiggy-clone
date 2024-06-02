@@ -8,6 +8,16 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Cart() {
     const cartItems = useSelector((store) => store.cart.items);
+    console.log(cartItems)
+    const arr =[]
+    const sum = cartItems.map(item => {
+        arr.push(item.price||item.defaultPrice)
+    }); 
+    const cartSum = arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    
+    console.log(arr)
+    
+
     const dispatch = useDispatch();
     const clearToast = ()=>toast(`items removed from cart`)
 
@@ -23,12 +33,13 @@ function Cart() {
     }
 
     return (
-        <div className="w-screen h-screen flex justify-center items-center">
+        <div className="w-screen h-full flex justify-center items-center">
             <div className="w-10/12 h-full bg-white">
             <ToastContainer />
                 <button className="bg-black p-2 text-white rounded-xl" onClick={handleClear}>
                     Clear Cart
                 </button>
+                <button className="bg-orange-400">{cartSum/100}</button>
                 
                 <div className="flex flex-col overflow-hidden oveflow-y-auto">
                     {cartItems.map((menu, index) => (
