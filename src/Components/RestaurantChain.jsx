@@ -89,7 +89,7 @@ function RestaurantChain(props) {
       <h1 className="ml-5 text-2xl font-bold">What's on your Restaurant?</h1>
       <div className="flex flex-row items-center justify-evenly">
         
-          <input placeholder='Search Your Restaurant' type="text" className=" w-2/4  h-10 bg-orange-400 text-white font-bold  border border-solid border-gray-200   rounded-xl p-2" value={searchText} onChange={(e) => setSearchText(e.target.value)} onInput={handleSearch} />
+          <input placeholder='Search Your Restaurant' type="text" className=" w-2/4  h-10 bg-gray-200 text-white font-bold  border border-solid border-gray-200   rounded-xl p-2" value={searchText} onChange={(e) => setSearchText(e.target.value)} onInput={handleSearch} />
           
 
         <button className="h-10 p-2 rounded-xl bg-orange-400 boxShad font-bold  text-sm lg:text-md md:text-md" onClick={filterTopRatedRestaurants}>4+ Rating</button>

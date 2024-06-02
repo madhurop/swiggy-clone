@@ -110,14 +110,14 @@ function RestaurantMenu() {
 
     return (
         <div className="w-full h-full overflow-hidden overflow-y-auto flex  justify-center bg-white md:w-full m-2">
-            <div className="w-full md:w-7/12 min-h-9/12 flex flex-col items-center justify-evenly">
+            <div className="w-full pr-2 md:w-7/12 min-h-9/12 flex flex-col items-center justify-evenly">
                 {/* Restaurant Info Section */}
                 <div className="w-full mt-5">
                     {/* Restaurant Name */}
                     <h2 className="text-lg sm:text-2xl font-bold">{resInfo.name}</h2>
                 </div>
                 {/* Restaurant Details Section */}
-                <div className="w-full h-40 bg-white border border-solid border-gray-200 rounded-xl flex flex-row items-center justify-evenly pl-3 shadow-xl mt-5 ">
+                <div className="w-full p-2 h-40 bg-white border border-solid border-gray-200 rounded-xl flex flex-row items-center justify-evenly pl-3 shadow-xl mt-5 ">
                     {/* Restaurant Details */}
                     {/* Adjust the grid layout based on screen size */}
                     <div className="h-full w-full md:w-3/4 grid grid-cols-1 md:grid-cols-2 gap-y-2 md:gap-x-4 md:gap-y-0">
@@ -139,9 +139,9 @@ function RestaurantMenu() {
                     <input type="text" placeholder='Search For Dishes' className="w-full md:w-6/12 h-10 rounded-xl bg-gray-100 border-2 border-solid border-gray-200 shadow-lg mt-3" value={searchMenu} onInput={(e) => setSearchMenu(e.target.value)} />
                     {!resInfo.veg && (
                         <div className="w-full md:w-6/12 flex justify-between mt-3">
-                            <button className="w-20 p-2 h-10 rounded-xl hover:text-white bg-green-500" onClick={() => handleItemSearch("VEG")}>Veg</button>
+                            <button className="w-20 p-3 h-10 rounded-xl hover:text-white bg-green-500" onClick={() => handleItemSearch("VEG")}>Veg</button>
 
-                            <button className="w-20 p-2 h-10 rounded-xl hover:text-white bg-red-500 text-nowrap" onClick={() => handleItemSearch("NONVEG")}>Non-Veg</button>
+                            <button className="w-20 p-3 h-10 rounded-xl hover:text-white bg-red-500 text-nowrap" onClick={() => handleItemSearch("NONVEG")}>Non-Veg</button>
                             {/* <button className="w-20 p-2 h-10 rounded-xl bg-gray-300" onClick={handleData}>Bestseller</button> */}
                         </div>
                     )}
